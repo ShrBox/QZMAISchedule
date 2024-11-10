@@ -1,12 +1,12 @@
 function scheduleHtmlParser(json) {
   const courseInfos = []
-  const schedule = JSON.parse(json);
+  const schedule = JSON.parse(json)
   const courses = schedule['data'][0]['item']
   for (let i = 0; i < courses.length; i++) {
     const course = courses[i]
     const weeksStr = course['classWeekDetails'].split(',')
-    const filteredWeeksStr = weeksStr.filter(week => week.trim() !== '');
-    const weeks = filteredWeeksStr.map(week => parseInt(week, 10));
+    const filteredWeeksStr = weeksStr.filter(week => week.trim() !== '')
+    const weeks = filteredWeeksStr.map(week => parseInt(week, 10))
     const courseTemp = {
       name: course['courseName'],
       teacher: course['teacherName'],

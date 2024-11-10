@@ -71,14 +71,14 @@ async function scheduleTimer({
       'Content-Type': 'application/json',
       'Token': token
     }
-  });
+  })
 
   if (modeResponse.status !== 200) {
     await AIScheduleAlert('Timer: 获取节次模式失败，请检查您是否已登录教务系统')
     return timer
   }
 
-  const modeData = await modeResponse.json();
+  const modeData = await modeResponse.json()
   let modeId = 'null' // 课表节次模式ID
   if (modeData['msg'] === 'success') {
     modeId = modeData['data'][0]['kbjcmsid']
@@ -94,14 +94,14 @@ async function scheduleTimer({
       'Content-Type': 'application/json',
       'Token': token
     }
-  });
+  })
 
   if (termResponse.status !== 200) {
     await AIScheduleAlert('Timer: 获取学期失败，请检查您是否已登录教务系统')
     return timer
   }
 
-  const termData = await termResponse.json();
+  const termData = await termResponse.json()
   let termId = 'null' // 学期ID
   if (termData['Msg'] === 'success') {
     termId = termData['data'][0]['semesterId']
@@ -117,14 +117,14 @@ async function scheduleTimer({
       'Content-Type': 'application/json',
       'Token': token
     }
-  });
+  })
 
   if (scheduleResponse.status !== 200) {
     await AIScheduleAlert('Timer: 获取课表失败，请检查您是否已登录教务系统')
     return timer
   }
 
-  const scheduleData = await scheduleResponse.json();
+  const scheduleData = await scheduleResponse.json()
   if (!scheduleData['Msg'].includes('success')) {
     await AIScheduleAlert('Timer: 获取课表失败，请检查您是否已登录教务系统')
     return timer
